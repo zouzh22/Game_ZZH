@@ -283,7 +283,9 @@ if __name__ =="__main__":
         st.session_state.win_size=win_size
         if global_size != game_size:    # 只有global_size被改变才额外触发rerun，它是全局变量，需要保持一致
             st.session_state.global_size=game_size
-            st.session_state["board"] = [0 for _ in range(st.session_state.global_size ** 2)]
+            st.session_state.board = [0 for _ in range(st.session_state.global_size ** 2)]
+            st.session_state.current_player = 1
+            st.session_state.able = True
             st.rerun()
         game_mode=st.selectbox("请选择对战方式",["玩家与AI","玩家与玩家"])
         if game_mode=="玩家与AI":
